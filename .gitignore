@@ -1,0 +1,4 @@
+automation/terraform/.terraform.tfstate.lock.info
+automation/terraform/.terraform/
+automation/terraform/terraform.tfstate
+automation/terraform/terraform.tfstate.backup
