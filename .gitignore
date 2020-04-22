@@ -2,3 +2,7 @@ automation/terraform/.terraform.tfstate.lock.info
 automation/terraform/.terraform/
 automation/terraform/terraform.tfstate
 automation/terraform/terraform.tfstate.backup
+automation/terraform/application/.terraform.tfstate.lock.info
+automation/terraform/application/.terraform/
+automation/terraform/application/terraform.tfstate
+automation/terraform/application/terraform.tfstate.backup
