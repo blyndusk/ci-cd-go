@@ -6,6 +6,7 @@
         - apt-transport-https
         - ca-certificates
         - gnupg2
+        - python3-pip
       update_cache: yes
       state: present
 
@@ -14,4 +15,3 @@
     name: 
       - docker
       - docker-compose
-      
