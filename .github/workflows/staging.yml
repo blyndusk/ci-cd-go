@@ -1,0 +1,28 @@
+name: staging deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v1
+        with:
+          ref: master
+
+      - name: deploy
+        uses: dawidd6/action-ansible-playbook@master
+        with:
+          playbook: ./automation/ansible/staging.yml
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          # vault_password: ${{secrets.VAULT_PASSWORD}}
+          options: |
+            --inventory ./automation/ansible/inventory/ec2.py
+            --user ubuntu
+            --tags "application"
+            --become
