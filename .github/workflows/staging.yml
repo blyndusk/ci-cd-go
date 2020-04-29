@@ -20,9 +20,10 @@ jobs:
         with:
           playbook: ./automation/ansible/staging.yml
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          # vault_password: ${{secrets.VAULT_PASSWORD}}
           options: |
             --inventory ./automation/ansible/inventory/ec2.py
             --user ubuntu
             --tags "application"
+            -e AWS_ACCESS_KEY_ID="${{ secrets.AWS_ACCESS_KEY_ID }}"
+            -e AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}"
             --become

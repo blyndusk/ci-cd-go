@@ -1,0 +1,28 @@
+name: production deploy
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v1
+        with:
+          ref: master
+
+      - name: deploy
+        uses: dawidd6/action-ansible-playbook@master
+        with:
+          playbook: ./automation/ansible/production.yml
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          options: |
+            --inventory ./automation/ansible/inventory/ec2.py
+            --user ubuntu
+            --tags "application"
+            -e AWS_ACCESS_KEY_ID="${{ secrets.AWS_ACCESS_KEY_ID }}"
+            -e AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+            --become
