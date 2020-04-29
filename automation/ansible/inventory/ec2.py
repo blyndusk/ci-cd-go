@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/Library/Frameworks/Python.framework/Versions/3.8/bin/python3
 
 '''
 EC2 external inventory script
